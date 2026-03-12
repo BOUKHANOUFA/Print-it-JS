@@ -26,3 +26,18 @@ console.log("flèche gauche");
 arrowRight.addEventListener("click", function () {
 console.log("flèche droite");
 });
+
+const dotsContainer = document.querySelector(".dots");
+
+for (let i = 0; i < slides.length; i++) {
+
+	const dot = document.createElement("div");
+
+	dot.classList.add("dot");
+	if (i === 0) {
+		dot.classList.add("dot_selected");
+	}
+
+	dotsContainer.appendChild(dot);
+
+}
