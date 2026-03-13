@@ -19,14 +19,6 @@ const slides = [
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 
-arrowLeft.addEventListener("click", function () {
-console.log("flèche gauche");
-});
-
-arrowRight.addEventListener("click", function () {
-console.log("flèche droite");
-});
-
 const dotsContainer = document.querySelector(".dots");
 
 for (let i = 0; i < slides.length; i++) {
@@ -34,6 +26,7 @@ for (let i = 0; i < slides.length; i++) {
 	const dot = document.createElement("div");
 
 	dot.classList.add("dot");
+
 	if (i === 0) {
 		dot.classList.add("dot_selected");
 	}
@@ -41,3 +34,51 @@ for (let i = 0; i < slides.length; i++) {
 	dotsContainer.appendChild(dot);
 
 }
+
+let currentSlide = 0;
+
+function showSlide(index){
+
+	const image = document.querySelector(".banner-img");
+	const texte = document.querySelector("#banner p");
+
+	image.src = "./assets/images/slideshow/" + slides[index].image;
+	texte.innerHTML = slides[index].tagLine;
+
+	const dots = document.querySelectorAll(".dot");
+
+dots.forEach((dot, i) => {
+
+	if (i === index) {
+		dot.classList.add("dot_selected");
+	} else {
+		dot.classList.remove("dot_selected");
+	}
+
+});
+
+}
+
+arrowRight.addEventListener("click", function () {
+
+	currentSlide++;
+
+	if (currentSlide > slides.length - 1) {
+		currentSlide = 0;
+	}
+
+	showSlide(currentSlide);
+
+});
+
+arrowLeft.addEventListener("click", function () {
+
+	currentSlide--;
+
+	if (currentSlide < 0) {
+		currentSlide = slides.length - 1;
+	}
+
+	showSlide(currentSlide);
+
+});
