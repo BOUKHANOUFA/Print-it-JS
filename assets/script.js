@@ -23,7 +23,7 @@ const dotsContainer = document.querySelector(".dots");
 
 for (let i = 0; i < slides.length; i++) {
 
-	const dot = document.createElement("div");
+    const dot = document.createElement("div");
 
 	dot.classList.add("dot");
 
@@ -60,6 +60,7 @@ dots.forEach((dot, i) => {
 }
 
 arrowRight.addEventListener("click", function () {
+	 console.log("clic droite");
 
 	currentSlide++;
 
@@ -72,6 +73,7 @@ arrowRight.addEventListener("click", function () {
 });
 
 arrowLeft.addEventListener("click", function () {
+	 console.log("clic gauche");
 
 	currentSlide--;
 
