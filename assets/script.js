@@ -22,6 +22,7 @@ const arrowRight = document.querySelector(".arrow_right");
 const dotsContainer = document.querySelector(".dots");
 
 for (let i = 0; i < slides.length; i++) {
+	      console.log(slides)
 
     const dot = document.createElement("div");
 
