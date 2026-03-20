@@ -74,7 +74,7 @@ arrowRight.addEventListener("click", function () {
 });
 
 arrowLeft.addEventListener("click", function () {
-	 console.log("clic gauche");
+	 
 
 	currentSlide--;
 
@@ -85,3 +85,4 @@ arrowLeft.addEventListener("click", function () {
 	showSlide(currentSlide);
 
 });
+showSlide(currentSlide);
