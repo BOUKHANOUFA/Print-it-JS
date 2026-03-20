@@ -1,88 +1,83 @@
 const slides = [
-	{
-		"image":"slide1.jpg",
-		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
-	},
-	{
-		"image":"slide2.jpg",
-		"tagLine":"Tirages haute définition grand format <span>pour vos bureaux et events</span>"
-	},
-	{
-		"image":"slide3.jpg",
-		"tagLine":"Grand choix de couleurs <span>de CMJN aux pantones</span>"
-	},
-	{
-		"image":"slide4.png",
-		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
-	}
-]
+  {
+    image: "slide1.jpg",
+    tagLine: "Impressions tous formats <span>en boutique et en ligne</span>",
+  },
+  {
+    image: "slide2.jpg",
+    tagLine:
+      "Tirages haute définition grand format <span>pour vos bureaux et events</span>",
+  },
+  {
+    image: "slide3.jpg",
+    tagLine: "Grand choix de couleurs <span>de CMJN aux pantones</span>",
+  },
+  {
+    image: "slide4.png",
+    tagLine: "Autocollants <span>avec découpe laser sur mesure</span>",
+  },
+];
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
+
+arrowLeft.style.cursor = "pointer";
+arrowRight.style.cursor = "pointer";
 
 const dotsContainer = document.querySelector(".dots");
 
 for (let i = 0; i < slides.length; i++) {
-	      console.log(slides)
+  console.log(slides);
 
-    const dot = document.createElement("div");
+  const dot = document.createElement("div");
 
-	dot.classList.add("dot");
+  dot.classList.add("dot");
 
-	if (i === 0) {
-		dot.classList.add("dot_selected");
-	}
+  if (i === 0) {
+    dot.classList.add("dot_selected");
+  }
 
-	dotsContainer.appendChild(dot);
-
+  dotsContainer.appendChild(dot);
 }
 
 let currentSlide = 0;
 
-function showSlide(index){
+function showSlide(index) {
+  const image = document.querySelector(".banner-img");
+  const texte = document.querySelector("#banner p");
 
-	const image = document.querySelector(".banner-img");
-	const texte = document.querySelector("#banner p");
+  image.src = "./assets/images/slideshow/" + slides[index].image;
+  texte.innerHTML = slides[index].tagLine;
 
-	image.src = "./assets/images/slideshow/" + slides[index].image;
-	texte.innerHTML = slides[index].tagLine;
+  const dots = document.querySelectorAll(".dot");
 
-	const dots = document.querySelectorAll(".dot");
-
-dots.forEach((dot, i) => {
-
-	if (i === index) {
-		dot.classList.add("dot_selected");
-	} else {
-		dot.classList.remove("dot_selected");
-	}
-
-});
-
+  dots.forEach((dot, i) => {
+    if (i === index) {
+      dot.classList.add("dot_selected");
+    } else {
+      dot.classList.remove("dot_selected");
+    }
+  });
 }
 
 arrowRight.addEventListener("click", function () {
-	 console.log("clic droite");
+  console.log("clic droite");
 
-	currentSlide++;
+  currentSlide++;
 
-	if (currentSlide > slides.length - 1) {
-		currentSlide = 0;
-	}
+  if (currentSlide > slides.length - 1) {
+    currentSlide = 0;
+  }
 
-	showSlide(currentSlide);
-
+  showSlide(currentSlide);
 });
 
 arrowLeft.addEventListener("click", function () {
-	 
+  currentSlide--;
 
-	currentSlide--;
+  if (currentSlide < 0) {
+    currentSlide = slides.length - 1;
+  }
 
-	if (currentSlide < 0) {
-		currentSlide = slides.length - 1;
-	}
-
-	showSlide(currentSlide);
-
+  showSlide(currentSlide);
 });
 showSlide(currentSlide);
